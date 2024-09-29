@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:;base64,=">
+
+    <style>
+
+      body {
+        font-family: Arial;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .content {
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+    <template id='main-template'>
+      <main class='content'>
+        
+      </main>
+    </template>
+
+    <template id='login-page'>
+      <div>
+        <button id='login-btn'>Log in to Bluesky</button>
+      </div>
+    </template>
+    
+    <template id='logged-in-page'>
+      <p>
+        Logged in to Bluesky as <span id='user-id'></span>
+      </p>
+
+      <button id='logout-btn'>Log out of Bluesky</button>
+
+      <div id='status-text'>
+      </div>
+
+      <div>
+        <button id='tn-btn'>Connect TakingNames</button>
+      </div>
+    </template>
+
+    <script src='./ui.js' type="module"></script>
+
+    <custom-handle-main></custom-handle-main>
+
+  </body>
+</html>
