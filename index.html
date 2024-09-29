@@ -7,18 +7,50 @@
 
     <style>
 
+      #user-id {
+        font-weight: bold;
+      }
+
       body {
         font-family: Arial;
+        font-size: 1.2em;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
 
-      .content {
-        width: 600px;
+      logged-in-page {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 5px;
+      }
+
+      .content {
+        max-width: 540px;
+      }
+
+      .button {
+        font-size: 16px;
+        width: 100%;
+        padding: 12px 32px;
+        background: none;
+        border: 1px solid #000;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .button:hover {
+        background-color: #eee;
+      }
+      .button svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
       }
 
     </style>
@@ -28,34 +60,76 @@
 
     <template id='main-template'>
       <main class='content'>
-        
+        <h1>Custom Bluesky Handles</h1>
       </main>
     </template>
 
     <template id='login-page'>
+
+      <p>
+        You can use this app to set a custom Bluesky handle using
+        <a href='https://takingnames.io'>TakingNames</a>.
+        To set a custom handle, first login:
+      </p>
+
       <div>
-        <button id='login-btn'>Log in to Bluesky</button>
+        <form>
+          <button id='login-btn' class='button'>
+            <div class='row'>
+              <svg viewBox="0 0 600 530" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z" fill="#1185fe"/>
+              </svg>
+              <span>Log in with Bluesky</span>
+            </div>
+          </button>
+        </form>
       </div>
     </template>
     
     <template id='logged-in-page'>
       <p>
-        Logged in to Bluesky as <span id='user-id'></span>
+        Your current handle is <span id='user-id'></span> (<a id='logout-btn' href='/logout'>logout</a>)
       </p>
 
-      <button id='logout-btn'>Log out of Bluesky</button>
-
-      <div id='status-text'>
-      </div>
+      <p>
+        Connect to <a href='https://takingnames.io'>TakingNames</a> to select a new handle
+      </p>
 
       <div>
-        <button id='tn-btn'>Connect TakingNames</button>
+        <button id='tn-btn' class='button'>
+          <div class='row'>
+            <svg viewBox="0 0 120 120" version="1.1" baseProfile="full" width="100" height="100"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <!-- background -->
+              <!--
+              <rect fill='#e3e3e3' width='120' height='120' />
+              -->
+              <!-- draw the N -->
+              <path d="M 53 33.5 L 93 92.5 L 93 26.5" stroke="#00C8F0" fill='none' stroke-width='14' stroke-linejoin='round'/>
+              <rect fill='#e3e3e3' x='85' y='93.5' width='16' height='7' />
+              <!-- draw the T -->
+              <path d="M 20 33.5 L 86 33.5 M 53 30 L 53 93.5" stroke="#4080FF" fill='none' stroke-width='14'/>
+            </svg>
+            <span>Connect TakingNames</span>
+          </div>
+        </button>
       </div>
+    </template>
+
+    <template id='status-page'>
+      <p id='status-text'>
+      </p>
     </template>
 
     <script src='./ui.js' type="module"></script>
 
     <custom-handle-main></custom-handle-main>
+
+    <script type='module'>
+      import * as namedrop from './lib/namedrop-js/index.js';
+      namedrop.setApiUri('https://dev.takingnames.io/namedrop');
+    </script>
 
   </body>
 </html>
