@@ -1,0 +1,3 @@
+[submodule "lib/namedrop-js"]
+	path = lib/namedrop-js
+	url = https://github.com/takingnames/namedrop-js
