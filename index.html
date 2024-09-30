@@ -128,7 +128,11 @@
 
     <script type='module'>
       import * as namedrop from './lib/namedrop-js/index.js';
-      namedrop.setApiUri('https://dev.takingnames.io/namedrop');
+      import { inProd } from './atproto.js';
+
+      if (!inProd()) {
+        namedrop.setApiUri('https://dev.takingnames.io/namedrop');
+      }
     </script>
 
   </body>

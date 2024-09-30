@@ -1,0 +1,19 @@
+{
+  "client_id": "https://atproto-handles-app.tn7.org/dev-client-metadata.json",
+  "application_type": "web",
+  "client_name": "Bluesky Custom Handles",
+  "client_uri": "https://atproto-handles-app.tn7.org",
+  "dpop_bound_access_tokens": true,
+  "grant_types": [
+    "authorization_code",
+    "refresh_token"
+  ],
+  "redirect_uris": [
+    "https://atproto-handles-app.tn7.org"
+  ],
+  "response_types": [
+    "code"
+  ],
+  "scope": "atproto transition:generic",
+  "token_endpoint_auth_method": "none"
+}

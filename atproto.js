@@ -381,7 +381,14 @@ async function lookupAuthServer(didData) {
 }
 
 async function getClientMeta() {
-  return fetch('/client-metadata.json').then(res => res.json());
+  const urlParts = import.meta.url.split('/');
+  const urlDir = urlParts.slice(0, -1).join('/') + '/';
+  const mdFilename = inProd() ? 'client-metadata.json' : 'dev-client-metadata.json';
+  return fetch(urlDir + mdFilename).then(res => res.json());
+}
+
+function inProd() {
+  return window.location.href.includes('github.io');
 }
 
 async function importJwks(privateJwk, publicJwk) {
@@ -414,4 +421,5 @@ export {
   resolveDid,
   login,
   logout,
+  inProd,
 };
