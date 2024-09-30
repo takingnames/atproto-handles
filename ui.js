@@ -155,7 +155,7 @@ async function setRecords(atClient, ndClient, statusText) {
 
   const newHandle = host ? `${host}.${domain}` : domain;
 
-  const failHtml = "Failed to update handle. <a href='/'>Restart</a>.";
+  const failHtml = `Failed to update handle. <a href='${window.location.href}'>Restart</a>.`;
 
   let attemptNum = 1;
   const intId = setInterval(async () => {
