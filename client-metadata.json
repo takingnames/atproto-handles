@@ -1,15 +1,15 @@
 {
-  "client_id": "https://tn-atproto.tn7.org/client-metadata.json",
+  "client_id": "https://takingnames.github.io/atproto-handles-app/client-metadata.json",
   "application_type": "web",
   "client_name": "Bluesky Custom Handles",
-  "client_uri": "https://tn-atproto.tn7.org",
+  "client_uri": "https://takingnames.github.io/atproto-handles-app",
   "dpop_bound_access_tokens": true,
   "grant_types": [
     "authorization_code",
     "refresh_token"
   ],
   "redirect_uris": [
-    "https://tn-atproto.tn7.org"
+    "https://takingnames.github.io/atproto-handles-app"
   ],
   "response_types": [
     "code"
