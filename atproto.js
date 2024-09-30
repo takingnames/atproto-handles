@@ -179,8 +179,10 @@ async function login(handleOrServer) {
   let as;
   let didData;
 
-  const did = await lookupDid(handleOrServer);
-
+  // TODO: we'll need this code if we ever want to support providers other than
+  // bsky.social
+  //const did = await lookupDid(handleOrServer);
+  let did;
   if (did) {
     didData = await resolveDid(did);
     handle = didData.alsoKnownAs[0].split('at://')[1];
