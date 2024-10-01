@@ -173,6 +173,15 @@ function logout() {
   localStorage.removeItem('login_data');
 }
 
+function setLoginDataHandle(newHandle) {
+  const loginDataJson = localStorage.getItem('login_data');
+  if (loginDataJson) {
+    const ld = JSON.parse(loginDataJson);
+    ld.handle = newHandle;
+    localStorage.setItem('login_data', JSON.stringify(ld));
+  }
+}
+
 async function login(handleOrServer) {
 
   let handle;
@@ -424,4 +433,5 @@ export {
   login,
   logout,
   inProd,
+  setLoginDataHandle,
 };

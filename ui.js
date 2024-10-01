@@ -93,7 +93,7 @@ class LoggedInPage extends HTMLElement {
   connectedCallback() {
     const tmpl = cloneTemplate('logged-in-page');
 
-    const userIdEl = tmpl.querySelector('#user-id');
+    const userIdEl = tmpl.querySelector('.user-id');
     userIdEl.innerText = this.atClient.handle;
 
     const logoutBtn = tmpl.querySelector('#logout-btn');
@@ -155,7 +155,7 @@ async function setRecords(atClient, ndClient, statusText) {
 
   const newHandle = host ? `${host}.${domain}` : domain;
 
-  const failHtml = `Failed to update handle. <a href='${window.location.href}'>Restart</a>.`;
+  const failHtml = `Failed to update handle. <a href='${window.location.href}'>Start Over</a>.`;
 
   let attemptNum = 1;
   const intId = setInterval(async () => {
@@ -182,7 +182,10 @@ async function setRecords(atClient, ndClient, statusText) {
         statusText.innerHTML = failHtml;
         return;
       }
-      statusText.innerText = "Successfully updated handle";
+
+      atproto.setLoginDataHandle(newHandle);
+
+      statusText.innerHTML = `Successfully updated handle to <span class='user-id'>${newHandle}</span>. <a href='${window.location.href}'>Start Over</a>`;
     }
   }, 1000);
 }
