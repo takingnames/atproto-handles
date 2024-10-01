@@ -294,6 +294,8 @@ async function checkLogin() {
     return null;
   }
 
+  window.history.replaceState(null, '', window.location.pathname);
+
   const authRequestJson = localStorage.getItem(state);
   localStorage.removeItem(state);
 
@@ -350,8 +352,6 @@ async function checkLogin() {
   }
 
   const handle = didData.alsoKnownAs[0].split('at://')[1];
-
-  window.history.replaceState(null, '', window.location.pathname);
 
   const loginData = {
     handle,
